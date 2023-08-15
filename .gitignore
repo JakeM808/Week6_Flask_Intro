@@ -3,3 +3,5 @@ venv/
 
 # also ignore the __pycache__
 __pycache__/
+
+.vscode/
