@@ -2,7 +2,7 @@ from . import api
 from app import db
 from app.models import Post
 from flask import request
-from .auth import basic_auth
+from .auth import basic_auth, token_auth
 
 
 @api.route('/token')
@@ -30,6 +30,7 @@ def get_post(post_id):
         return {'error': f'Post with an ID of {post_id} does not eist'}, 404
     
 @api.route('/posts', methods=["POST"])
+@token_auth.login_required
 def create_post():
     print(request)
     # Check to see that the request body is JSON
